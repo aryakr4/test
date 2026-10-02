@@ -3,7 +3,6 @@ import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MotionProvider from "@/components/MotionProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -128,14 +127,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen antialiased">
-        <MotionProvider>
-          <div className="bg-green-dark">
-            <Navbar />
-            {children}
-          </div>
-          <Footer />
-        </MotionProvider>
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
+        <div className="bg-green-dark">
+          <Navbar />
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

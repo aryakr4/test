@@ -7,7 +7,6 @@ Hutt Capital is a blockchain venture capital fund-of-funds platform website. The
 - **Framework:** Next.js 16.2.1 (App Router, Turbopack)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
-- **Animations:** Framer Motion
 - **Fonts:** Poppins (sans), Playfair Display (serif) via `next/font/google`
 
 ## Commands
@@ -41,6 +40,7 @@ public/
 - **Body text:** Poppins (via `font-sans`)
 
 ## Conventions
-- Use `"use client"` directive for components with Framer Motion or interactivity
+- Use `"use client"` directive for components with interactivity
+- No animations or transitions — elements render static, hover states change instantly
 - Tailwind CSS v4 theme tokens defined in `globals.css` under `@theme inline`
 - Path alias: `@/` maps to `src/`

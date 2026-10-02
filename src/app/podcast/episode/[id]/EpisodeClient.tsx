@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 type EpisodeLink = {
@@ -49,14 +48,11 @@ export function EpisodeClient({
     <main>
       {/* Hero */}
       <div className="py-20 md:py-28 px-10 md:px-20 lg:px-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
         >
           <Link
             href="/podcast"
-            className="text-white/50 hover:text-coral transition-colors text-sm tracking-wide inline-flex items-center gap-2 mb-8"
+            className="text-white/50 hover:text-coral text-sm tracking-wide inline-flex items-center gap-2 mb-8"
           >
             <svg
               width="16"
@@ -72,33 +68,24 @@ export function EpisodeClient({
             </svg>
             Back to all episodes
           </Link>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <h1
           className="font-serif text-coral text-4xl md:text-5xl lg:text-6xl leading-tight mb-4"
         >
           Episode {episodeNumber} &mdash; {title}
-        </motion.h1>
+        </h1>
 
         {pubDate && (
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <p
             className="text-white/50 text-sm tracking-wide mb-10"
           >
             {formatDate(pubDate)} &bull; Inside the Hutt &bull; Hutt Capital
-          </motion.p>
+          </p>
         )}
 
         {/* Captivate Embedded Player */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+        <div
           className="w-full max-w-4xl"
         >
           <iframe
@@ -111,35 +98,29 @@ export function EpisodeClient({
             allow="autoplay"
             title={`Episode ${episodeNumber} — ${title}`}
           />
-        </motion.div>
+        </div>
 
         {/* Description */}
         {description && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          <div
             className="mt-12 max-w-3xl"
           >
             <h2 className="font-serif text-coral text-2xl mb-6">About this episode</h2>
             <div
               className="text-white/80 text-sm leading-7 tracking-wide max-w-none
                 [&_p]:mb-4 [&_p:empty]:hidden [&_strong]:text-white/90 [&_em]:text-white/70
-                [&_a]:text-coral [&_a:hover]:text-coral/80 [&_a]:transition-colors [&_a]:underline
+                [&_a]:text-coral [&_a:hover]:text-coral/80 [&_a]:underline
                 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_li]:text-white/80"
               dangerouslySetInnerHTML={{ __html: cleanDescription(description) }}
             />
-          </motion.div>
+          </div>
         )}
 
         {/* Disclosures */}
-        <motion.details
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+        <details
           className="mt-12 max-w-3xl group"
         >
-          <summary className="text-white/40 text-xs tracking-wide cursor-pointer hover:text-white/60 transition-colors">
+          <summary className="text-white/40 text-xs tracking-wide cursor-pointer hover:text-white/60">
             Disclosures
           </summary>
           <div className="mt-4 text-white/30 text-xs leading-6 tracking-wide space-y-3">
@@ -161,20 +142,17 @@ export function EpisodeClient({
                 href="http://www.adviserinfo.sec.gov"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/40 hover:text-coral underline transition-colors"
+                className="text-white/40 hover:text-coral underline"
               >
                 www.adviserinfo.sec.gov
               </a>
             </p>
           </div>
-        </motion.details>
+        </details>
 
         {/* Prev / Next Navigation */}
         {(prevEpisode || nextEpisode) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+          <div
             className="mt-16 max-w-3xl border-t border-white/10 pt-8 flex items-start justify-between gap-6"
           >
             {prevEpisode ? (
@@ -185,7 +163,7 @@ export function EpisodeClient({
                 <span className="text-white/30 text-xs tracking-[0.15em] uppercase block mb-2">
                   &larr; Previous
                 </span>
-                <p className="font-serif text-white/70 group-hover:text-coral transition-colors text-base md:text-lg truncate">
+                <p className="font-serif text-white/70 group-hover:text-coral text-base md:text-lg truncate">
                   Ep {prevEpisode.number} &mdash; {prevEpisode.title}
                 </p>
               </Link>
@@ -201,14 +179,14 @@ export function EpisodeClient({
                 <span className="text-white/30 text-xs tracking-[0.15em] uppercase block mb-2">
                   Next &rarr;
                 </span>
-                <p className="font-serif text-white/70 group-hover:text-coral transition-colors text-base md:text-lg truncate">
+                <p className="font-serif text-white/70 group-hover:text-coral text-base md:text-lg truncate">
                   Ep {nextEpisode.number} &mdash; {nextEpisode.title}
                 </p>
               </Link>
             ) : (
               <div className="flex-1" />
             )}
-          </motion.div>
+          </div>
         )}
       </div>
     </main>

@@ -7,7 +7,6 @@ Hutt Capital is a blockchain venture capital fund-of-funds platform. We partner 
 - [Next.js](https://nextjs.org) 16 (App Router, Turbopack)
 - TypeScript
 - Tailwind CSS v4
-- Framer Motion
 
 ## Getting Started
 
@@ -35,7 +34,6 @@ src/
     page.tsx            Home — portfolio listings & contact info
     layout.tsx          Root layout with fonts & navigation
     globals.css         Global styles & Tailwind theme
-    not-found.tsx       404 page
     robots.ts           robots.txt generator
     sitemap.ts          sitemap.xml generator
     podcast/            Podcast index + dynamic episode pages
@@ -47,9 +45,7 @@ src/
     Footer.tsx          Site footer
     CopyButton.tsx      One-click copy-to-clipboard
     ExternalIcon.tsx    Inline external-link icon
-    MotionProvider.tsx  Respects prefers-reduced-motion
   lib/
-    animations.ts       Shared Framer Motion variants
     nav-links.ts        Central navigation config
     rss.ts              Podcast RSS feed parsing
 public/

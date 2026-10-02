@@ -98,7 +98,7 @@ export default function Terms() {
                 {section.email && (
                   <a
                     href={`mailto:${section.email}`}
-                    className="text-coral hover:text-coral/70 transition-colors"
+                    className="text-coral hover:text-coral/70"
                   >
                     {section.email}
                   </a>

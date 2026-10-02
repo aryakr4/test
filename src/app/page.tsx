@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/animations";
 import { CopyButton } from "@/components/CopyButton";
 
 const fundInvestments = [
@@ -58,7 +56,7 @@ function InvestmentItem({ name, url }: { name: string; url?: string }) {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center gap-1.5 text-white/80 hover:text-white transition-colors duration-200 tracking-wide"
+        className="group inline-flex items-center gap-1.5 text-white/80 hover:text-white tracking-wide"
       >
         <span>{name}</span>
         <svg
@@ -71,7 +69,7 @@ function InvestmentItem({ name, url }: { name: string; url?: string }) {
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className="opacity-0 -translate-x-0.5 translate-y-0.5 text-coral transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
+          className="opacity-0 text-coral group-hover:opacity-100"
         >
           <path d="M2.5 7.5L7.5 2.5" />
           <path d="M3.5 2.5H7.5V6.5" />
@@ -97,76 +95,56 @@ export default function Home() {
         {/* Left Column */}
         <div>
           <h1 className="sr-only">Hutt Capital — Blockchain Venture Capital Fund of Funds</h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <p
             className="text-white/90 text-base leading-8 max-w-2xl mb-20 tracking-wide"
           >
             Hutt Capital is a blockchain venture capital fund of funds platform.
             We partner with leading blockchain VC firms to provide diversified
             exposure to the most promising blockchain &amp; crypto startups
             globally through fund, secondary, and direct investment strategies.
-          </motion.p>
+          </p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <h2
             className="font-serif text-coral text-3xl md:text-4xl mb-10"
           >
             Portfolio
-          </motion.h2>
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+              <h3
                 className="text-coral text-xs tracking-[0.2em] font-semibold uppercase border-b border-white/10 pb-3 mb-6"
               >
                 Fund Investments
-              </motion.h3>
+              </h3>
 
               <ul className="space-y-4">
-                {fundInvestments.map((fund, i) => (
-                  <motion.li
+                {fundInvestments.map((fund) => (
+                  <li
                     key={fund.name}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
                     className="text-sm"
                   >
                     <InvestmentItem name={fund.name} url={"url" in fund ? fund.url : undefined} />
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+              <h3
                 className="text-coral text-xs tracking-[0.2em] font-semibold uppercase border-b border-white/10 pb-3 mb-6"
               >
                 Direct &amp; Co-Investments
-              </motion.h3>
+              </h3>
 
               <ul className="space-y-4">
-                {directInvestments.map((company, i) => (
-                  <motion.li
+                {directInvestments.map((company) => (
+                  <li
                     key={company.name}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
                     className="text-sm"
                   >
                     <InvestmentItem name={company.name} url={"url" in company ? company.url : undefined} />
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -175,19 +153,13 @@ export default function Home() {
 
         {/* Right Column - Contact */}
         <div className="lg:pt-8 lg:border-l lg:border-white/10 lg:pl-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <h2
             className="font-serif text-coral text-3xl md:text-4xl mb-10"
           >
             Contact
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
+          <div
           >
             <h3 className="text-coral text-xs tracking-[0.2em] font-semibold mb-4 uppercase">
               Inquiries
@@ -195,7 +167,7 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-12">
               <a
                 href="mailto:brooke@huttcapital.com"
-                className="text-white/80 hover:text-white transition-colors duration-200 tracking-wide text-base select-all"
+                className="text-white/80 hover:text-white tracking-wide text-base select-all"
               >
                 brooke@huttcapital.com
               </a>
@@ -210,7 +182,7 @@ export default function Home() {
               <p>Portland, OR</p>
               <p>West Palm Beach, FL</p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </main>

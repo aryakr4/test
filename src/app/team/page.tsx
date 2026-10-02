@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const teamMembers = [
@@ -42,15 +41,6 @@ const teamMembers = [
   },
 ];
 
-const bioFade = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
-  },
-};
-
 export default function Team() {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
@@ -58,26 +48,19 @@ export default function Team() {
     <main className="px-10 md:px-20 lg:px-32 pb-20">
       <div className="max-w-5xl mx-auto mt-12 lg:mt-20">
         {/* Page Header */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <h1
           className="font-serif text-coral text-3xl md:text-4xl mb-16 md:mb-24"
         >
           Our Team
-        </motion.h1>
+        </h1>
 
         <div className="space-y-16 md:space-y-28">
           {teamMembers.map((member, idx) => {
             const reversed = idx % 2 === 1;
 
             return (
-              <motion.div
+              <div
                 key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
               >
                 {/* Photo & Socials */}
@@ -99,23 +82,23 @@ export default function Team() {
                     />
                   </div>
                   {member.socials.length > 0 && (
-                    <div className="flex gap-5 mt-5">
+                    <div className="flex gap-4 mt-4">
                       {member.socials.map((social) => (
                         <a
                           key={social.platform}
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-white/70 hover:text-coral transition-colors p-2 -m-2"
+                          className="text-white/70 hover:text-coral p-2 -m-2"
                           title={social.platform === "linkedin" ? "LinkedIn" : "X"}
                         >
                           {social.platform === "linkedin" && (
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
                           )}
                           {social.platform === "x" && (
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                             </svg>
                           )}
@@ -127,35 +110,23 @@ export default function Team() {
 
                 {/* Bio */}
                 <div className={reversed ? "md:order-1" : ""}>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.15 }}
+                  <h2
                     className="font-serif text-coral text-3xl md:text-5xl mb-2"
                   >
                     {member.name}
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                  </h2>
+                  <p
                     className="text-coral text-xs tracking-[0.2em] font-semibold mb-8 uppercase"
                   >
                     {member.title}
-                  </motion.p>
+                  </p>
 
                   <div className="space-y-6">
-                    <motion.p
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={bioFade}
+                    <p
                       className="text-white/80 text-sm leading-7 tracking-wide font-medium"
                     >
                       {member.bio[0]}
-                    </motion.p>
+                    </p>
 
                     <button
                       onClick={() =>
@@ -164,7 +135,7 @@ export default function Team() {
                           [member.name]: !prev[member.name],
                         }))
                       }
-                      className="flex items-center gap-1.5 text-coral text-xs tracking-[0.15em] uppercase font-semibold hover:text-coral/70 transition-colors"
+                      className="flex items-center gap-1.5 text-coral text-xs tracking-[0.15em] uppercase font-semibold hover:text-coral/70"
                     >
                       {expanded[member.name] ? "Read less" : "Read more"}
                       <svg
@@ -176,22 +147,15 @@ export default function Team() {
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className={`transition-transform duration-300 ${expanded[member.name] ? "rotate-180" : ""}`}
+                        className={expanded[member.name] ? "rotate-180" : ""}
                       >
                         <path d="M6 9l6 6 6-6" />
                       </svg>
                     </button>
 
                     {/* Collapsible remaining paragraphs */}
-                    <AnimatePresence initial={false}>
                       {expanded[member.name] && (
-                        <motion.div
-                          key="expanded"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
-                          style={{ overflow: "hidden" }}
+                        <div
                         >
                           <div className="space-y-6">
                             {member.bio.slice(1).map((paragraph, i) => (
@@ -203,12 +167,11 @@ export default function Team() {
                               </p>
                             ))}
                           </div>
-                        </motion.div>
+                        </div>
                       )}
-                    </AnimatePresence>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

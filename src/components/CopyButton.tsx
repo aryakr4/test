@@ -16,7 +16,7 @@ export function CopyButton({ text }: { text: string }) {
     <button
       onClick={handleCopy}
       title={copied ? "Copied!" : "Copy email"}
-      className="inline-flex items-center justify-center text-white/30 hover:text-coral transition-colors duration-200 shrink-0"
+      className="inline-flex items-center justify-center text-white/30 hover:text-coral shrink-0"
     >
       {copied ? (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

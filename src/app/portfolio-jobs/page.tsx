@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { fadeUp } from "@/lib/animations";
 import { ExternalIcon } from "@/components/ExternalIcon";
 
 type Filter = "all" | "fund" | "portfolio";
@@ -41,7 +39,7 @@ function RoleItem({ name, url, showIcon }: { name: string; url: string | null; s
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-coral hover:opacity-100 transition-all"
+        className="hover:text-coral hover:opacity-100"
       >
         {name}
         {showIcon && <ExternalIcon size={12} />}
@@ -72,39 +70,30 @@ export default function PortfolioJobs() {
     <main className="px-10 md:px-20 lg:px-32 pb-20">
       <div className="max-w-5xl mt-16 lg:mt-24">
         {/* Page Header */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <h1
           className="font-serif text-coral text-3xl md:text-4xl mb-6"
         >
           Portfolio Jobs
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <p
           className="text-white/90 text-base leading-8 italic mb-8 tracking-wide max-w-2xl"
         >
           In addition to those listed below, our managers are often hiring for
           roles that aren&rsquo;t listed on a jobs or careers page, so please
           reach out if you are looking for investment or operational roles within
           blockchain/crypto venture capital.
-        </motion.p>
+        </p>
 
         {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
+        <div
           className="flex flex-wrap gap-3 mb-12"
         >
           {filters.map((f) => (
             <button
               key={f.value}
               onClick={() => setFilter(f.value)}
-              className={`text-xs tracking-[0.15em] font-semibold uppercase px-4 py-2 rounded-full border transition-all ${
+              className={`text-xs tracking-[0.15em] font-semibold uppercase px-4 py-2 rounded-full border ${
                 filter === f.value
                   ? "bg-coral text-white border-coral"
                   : "bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80"
@@ -113,105 +102,75 @@ export default function PortfolioJobs() {
               {f.label}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         <div className={`grid grid-cols-1 gap-10 md:gap-16 ${showFund && showPortfolio ? "md:grid-cols-2" : ""}`}>
           {/* Fund Manager Roles */}
-          <AnimatePresence>
             {showFund && (
-              <motion.div
+              <div
                 key="fund"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.3 }}
               >
                 <h3 className="text-coral text-xs tracking-[0.2em] font-semibold mb-6 uppercase">
                   Fund Manager Roles
                 </h3>
 
                 <ul className="space-y-4">
-                  {fundManagerRoles.map((role, i) => (
-                    <motion.li
+                  {fundManagerRoles.map((role) => (
+                    <li
                       key={role.name}
-                      custom={i}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={fadeUp}
                       className="text-white/80 text-sm tracking-wide"
                     >
                       <RoleItem name={role.name} url={role.url} showIcon={role.showIcon} />
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
 
           {/* Portfolio Company or Protocol Roles */}
-          <AnimatePresence>
             {showPortfolio && (
-              <motion.div
+              <div
                 key="portfolio"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.3 }}
               >
                 <h3 className="text-coral text-xs tracking-[0.2em] font-semibold mb-6 uppercase">
                   Portfolio Company or Protocol Roles
                 </h3>
 
                 <ul className="space-y-4">
-                  {portfolioCompanyRoles.map((company, i) => (
-                    <motion.li
+                  {portfolioCompanyRoles.map((company) => (
+                    <li
                       key={company.name}
-                      custom={i}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={fadeUp}
                       className="text-white/80 text-sm tracking-wide"
                     >
                       <RoleItem name={company.name} url={company.url} />
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
         </div>
 
         {/* Other */}
         <div className="mt-10 md:mt-16">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <h3
             className="text-coral text-xs tracking-[0.2em] font-semibold mb-6 uppercase"
           >
             Other
-          </motion.h3>
+          </h3>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <p
             className="text-white/80 text-sm tracking-wide"
           >
             <a
               href="https://jobs.theblockchainassociation.org/companies"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-coral hover:opacity-100 transition-all"
+              className="hover:text-coral hover:opacity-100"
             >
               Blockchain Association Job Board
             </a>{" "}
             (open roles with blockchain/crypto companies)
-          </motion.p>
+          </p>
         </div>
 
       </div>
